@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html lang="id"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Tugas Pengulangan Angka</title> 
+    <style> 
+        body { font-family: sans-serif; margin: 20px; } 
+        .result-box { margin-top: 20px; padding: 10px; border: 1px solid #ccc; line-height: 1.6; }         input { padding: 5px; } 
+        button { padding: 5px 15px; cursor: pointer; } 
+    </style> 
+</head> 
+<body> 
+ 
+    <h2>Form Input Nilai Angka</h2> 
+    <p>Masukkan batas angka untuk melihat hasil pengulangan:</p> 
+     
+    <input type="number" id="inputAngka" placeholder="Contoh: 30"> 
+    <button onclick="prosesAngka()">Tampilkan Hasil</button> 
+ 
+    <div class="result-box" id="hasil"> 
+        <em>Hasil akan muncul di sini...</em> 
+    </div> 
+ 
+    <script>         function prosesAngka() {             // Mengambil nilai dari input             const batas = document.getElementById('inputAngka').value;             const wadahHasil = document.getElementById('hasil'); 
+             
+            if (batas === "" || batas <= 0) { 
+                wadahHasil.innerHTML = "Silakan masukkan angka positif yang valid."; 
+                return; 
+            } 
+ 
+            let teksOutput = ""; 
+ 
+            // Melakukan pengulangan (Looping) 
+            for (let i = 1; i <= batas; i++) { 
+                 
+                // Aturan 1: Habis dibagi 15 (cek ini paling pertama)                 if (i % 15 === 0) { 
+                    teksOutput += "<strong>WEB</strong>, "; 
+                }  
+                // Aturan 2: Habis dibagi 5                 else if (i % 5 === 0) { 
+                    teksOutput += "Unindra, "; 
+                }  
+                // Aturan 3: Habis dibagi 3                 else if (i % 3 === 0) { 
+                    teksOutput += "TI, "; 
+                }  
+                // Jika tidak memenuhi kriteria di atas, tampilkan angka aslinya                 else { 
+                    teksOutput += i + ", "; 
+                } 
+            } 
+ 
+            // Menampilkan hasil ke layar dan menghapus koma terakhir             wadahHasil.innerHTML = teksOutput.slice(0, -2); 
+        } 
+    </script> 
+ 
+</body> 
+</html> 
